@@ -607,6 +607,134 @@
 </head>
 <body>
 
+  <!-- Popup Modal -->
+  <div id="popup-overlay" style="
+    position: fixed; inset: 0; z-index: 1000;
+    background: rgba(0,0,0,0.65);
+    display: flex; align-items: center; justify-content: center;
+    padding: 1.5rem;
+    backdrop-filter: blur(4px);
+  ">
+    <div style="
+      background: #fafaf8;
+      border-radius: 12px;
+      max-width: 520px;
+      width: 100%;
+      overflow: hidden;
+      box-shadow: 0 24px 80px rgba(0,0,0,0.3);
+      position: relative;
+    ">
+      <!-- Header -->
+      <div style="
+        background: linear-gradient(135deg, #1a1a1a 0%, #2c2416 60%, #b07a3f 100%);
+        padding: 2.5rem 2.5rem 2rem;
+      ">
+        <p style="
+          font-family: 'Helvetica Neue', Arial, sans-serif;
+          font-size: 0.7rem; font-weight: 600;
+          letter-spacing: 0.18em; text-transform: uppercase;
+          color: #d4a55a; margin-bottom: 0.75rem;
+        ">Accents Presents</p>
+        <h2 style="
+          font-family: Georgia, serif;
+          font-size: 2rem; font-weight: 400;
+          color: #fff; margin-bottom: 0.5rem;
+        ">Friends on<br>the Journey</h2>
+        <p style="
+          font-family: 'Helvetica Neue', Arial, sans-serif;
+          font-size: 0.9rem; color: rgba(255,255,255,0.65);
+        ">A gathering for immigrant leaders &amp; their friends</p>
+      </div>
+      <!-- Body -->
+      <div style="padding: 2rem 2.5rem 2.5rem;">
+        <p style="
+          font-family: 'Helvetica Neue', Arial, sans-serif;
+          font-size: 0.95rem; color: #444;
+          line-height: 1.75; margin-bottom: 1.5rem;
+        ">An invitation to gather through ministry, friendship, and shared life — strengthening bonds and exploring how God moves among us.</p>
+        <!-- Details -->
+        <div style="display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 2rem;">
+          <div style="display:flex; gap:0.75rem; align-items:center;">
+            <span style="font-size:1.1rem;">📅</span>
+            <span style="font-family:'Helvetica Neue',Arial,sans-serif; font-size:0.9rem; color:#222;">
+              <strong>April 27–30, 2026</strong>
+            </span>
+          </div>
+          <div style="display:flex; gap:0.75rem; align-items:center;">
+            <span style="font-size:1.1rem;">📍</span>
+            <span style="font-family:'Helvetica Neue',Arial,sans-serif; font-size:0.9rem; color:#222;">
+              Zephyr Point
+            </span>
+          </div>
+          <div style="display:flex; gap:0.75rem; align-items:center;">
+            <span style="font-size:1.1rem;">💳</span>
+            <span style="font-family:'Helvetica Neue',Arial,sans-serif; font-size:0.9rem; color:#222;">
+              $40 registration · Travel scholarships available
+            </span>
+          </div>
+        </div>
+        <!-- Buttons -->
+        <div style="display:flex; gap:0.75rem; flex-wrap:wrap;">
+          <a href="https://www.ncdcatlanta.org/friendsonthejourney" target="_blank" style="
+            flex: 1; min-width: 140px;
+            background: #b07a3f; color: #fff;
+            padding: 0.85rem 1.5rem;
+            border-radius: 4px; text-align: center;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            font-size: 0.875rem; font-weight: 600;
+            letter-spacing: 0.04em;
+            text-decoration: none;
+          ">Register Now →</a>
+          <button onclick="document.getElementById('popup-overlay').style.display='none'" style="
+            flex: 1; min-width: 120px;
+            background: transparent;
+            border: 1px solid #ccc;
+            color: #666;
+            padding: 0.85rem 1.5rem;
+            border-radius: 4px; text-align: center;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            font-size: 0.875rem;
+            cursor: pointer;
+          ">Maybe Later</button>
+        </div>
+      </div>
+      <!-- Close X -->
+      <button onclick="document.getElementById('popup-overlay').style.display='none'" style="
+        position: absolute; top: 1rem; right: 1rem;
+        background: rgba(255,255,255,0.15);
+        border: none; color: #fff;
+        width: 30px; height: 30px;
+        border-radius: 50%;
+        font-size: 1rem; cursor: pointer;
+        display: flex; align-items: center; justify-content: center;
+        line-height: 1;
+      ">✕</button>
+    </div>
+  </div>
+  <script>
+    // Show popup after 1.5 seconds; don't show again for 1 day if dismissed
+    window.addEventListener('DOMContentLoaded', function() {
+      var overlay = document.getElementById('popup-overlay');
+      if (sessionStorage.getItem('popupDismissed')) {
+        overlay.style.display = 'none';
+      } else {
+        overlay.style.display = 'none';
+        setTimeout(function() { overlay.style.display = 'flex'; }, 1500);
+      }
+      overlay.addEventListener('click', function(e) {
+        if (e.target === overlay) {
+          overlay.style.display = 'none';
+          sessionStorage.setItem('popupDismissed', '1');
+        }
+      });
+      document.querySelectorAll('button').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          sessionStorage.setItem('popupDismissed', '1');
+        });
+      });
+    });
+  </script>
+
   <!-- Navigation -->
   <nav>
     <div class="nav-inner">
