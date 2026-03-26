@@ -8,7 +8,13 @@
       "Bash(gh auth:*)",
       "Bash(brew install:*)",
       "Bash(git remote:*)",
-      "Bash(git push:*)"
+      "Bash(git push:*)",
+      "Bash(ls /var/folders/*/T/claude-*/uploads/)",
+      "Bash(ls ~/Downloads/*.jpg)",
+      "Bash(find /tmp -name *.jpg -o -name *.png)",
+      "Bash(find /var/folders -name *.jpg -newer /Users/samkim/Downloads/ACCENTS/sam-kim.jpg)",
+      "Bash(find ~/Downloads -name *.jpg -newer /Users/samkim/Downloads/ACCENTS/sam-kim.jpg)",
+      "Bash(ls /Users/samkim/Downloads/ACCENTS/*.jpg)"
     ]
   }
 }
